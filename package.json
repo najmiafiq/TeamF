@@ -1,0 +1,19 @@
+{
+  "name": "teamf",
+  "version": "1.0.0",
+  "description": "Space Invaders-like Multiplayer Web Game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/najmiafiq/TeamF.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/najmiafiq/TeamF/issues"
+  },
+  "homepage": "https://github.com/najmiafiq/TeamF#readme"
+}
