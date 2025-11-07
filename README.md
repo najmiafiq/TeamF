@@ -1,2 +1,2 @@
 # TeamF
-Group Project Repo
+Group Project Repo - Space Invader-esque Multiplayer Web Game
