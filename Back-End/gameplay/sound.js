@@ -43,7 +43,13 @@ window.addEventListener('keydown', playEffect);
     adjust volume function
 */
 document.getElementById("music").addEventListener('input', (event) => {
-    musicAudio.volume = event.target.value;
+    let volume = event.target.value;
+    musicAudio.volume = volume;
+    if (volume == 0) {
+        volumeIcon.className = muteIcon;
+    } else {
+        volumeIcon.className = loudIcon;
+    }
 });
 
 document.getElementById("effect").addEventListener('input', (event) => {
