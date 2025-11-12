@@ -67,6 +67,6 @@ document.getElementById("music").addEventListener('input', (event) => {
 
 document.getElementById("effect").addEventListener('input', (event) => {
     const volume = event.target.value;
-    effectAudio.volume = event.target.value;
+    effectAudio.volume = volume;
     shootAudio.volume = volume;
 });
