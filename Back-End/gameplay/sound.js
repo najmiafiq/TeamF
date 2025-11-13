@@ -1,26 +1,28 @@
 const musicAudio = document.getElementById("musicAudio");
 const effectAudio = document.getElementById("effectAudio");
+const shootAudio = document.getElementById("shootAudio");
 const volumeIcon = document.getElementById("volume");
-const muteIcon = "fa fa-volume-off";
-const loudIcon = "fa fa-volume-down";
-const defaultVolume = 0.5;
+const MUTE_ICON = "fa fa-volume-off";
+const LOUD_ICON = "fa fa-volume-down";
+const DEFAULT_VOLUME = 0.5;
 
 window.onload = function () {
     musicAudio.loop = true;
-    musicAudio.volume = defaultVolume;
-    effectAudio.volume = defaultVolume;
+    musicAudio.volume = DEFAULT_VOLUME;
+    effectAudio.volume = DEFAULT_VOLUME;
+    shootAudio.volume = DEFAULT_VOLUME;
 }
 
 /* 
     background music only start playing when user interact with page
 */
 if (performance.getEntriesByType("navigation").type === PerformanceEntry.TYPE_RELOAD) {
-    volumeIcon.className = muteIcon; 
+    volumeIcon.className = MUTE_ICON; 
 }
 
 function playMusicOnce() {
   musicAudio.play();
-  volumeIcon.className = loudIcon;
+  volumeIcon.className = LOUD_ICON;
   window.removeEventListener("click", playMusicOnce);
   window.removeEventListener("keydown", playMusicOnce);
 }
@@ -36,16 +38,35 @@ function playEffect(){
     effectAudio.play();
 }
 
-window.addEventListener('click', playEffect);
-window.addEventListener('keydown', playEffect);
+function playShoot(){
+    shootAudio.currentTime = 0;
+    shootAudio.play();
+}
 
+window.addEventListener('click', playEffect);
+
+window.addEventListener('keydown', (ev) => {
+    if(ev.key == ' '){
+        playShoot();
+    }else{
+        playEffect();
+    }
+})
 /* 
     adjust volume function
 */
 document.getElementById("music").addEventListener('input', (event) => {
-    musicAudio.volume = event.target.value;
+    const volume = event.target.value;
+    musicAudio.volume = volume;
+    if (volume == 0) {
+        volumeIcon.className = MUTE_ICON;
+    } else {
+        volumeIcon.className = LOUD_ICON;
+    }
 });
 
 document.getElementById("effect").addEventListener('input', (event) => {
-    effectAudio.volume = event.target.value;
+    const volume = event.target.value;
+    effectAudio.volume = volume;
+    shootAudio.volume = volume;
 });
