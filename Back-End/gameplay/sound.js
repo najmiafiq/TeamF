@@ -16,9 +16,9 @@ window.onload = function () {
 /* 
     background music only start playing when user interact with page
 */
-if (performance.getEntriesByType("navigation").type === PerformanceEntry.TYPE_RELOAD) {
-    volumeIcon.className = MUTE_ICON; 
-}
+// if (performance.getEntriesByType("navigation").type === PerformanceEntry.TYPE_RELOAD) {
+//     volumeIcon.className = MUTE_ICON; 
+// }
 
 function playMusicOnce() {
   musicAudio.play();
